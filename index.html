@@ -67,8 +67,8 @@ a{color:var(--acc2)}
 <script>
 const QUIZ_URL = 'questions.json';
 const CTA = {
-  bank: 'https://prepster1.gumroad.com/l/ilfwgc',
-  chart: 'https://prepster1.gumroad.com/l/xgmzcv'
+  chart: 'https://payhip.com/b/wlbz',
+  bank: 'https://payhip.com/b/703w'
 };
 let ALL = [], Q = [], i = 0, score = 0, wrong = [], answered = false, mode = '';
 
@@ -110,10 +110,10 @@ function home() {
     <button class="btn d" onclick="start('all')">Full Test<small>25 mixed questions</small></button>
   </div>
   <div class="card cta">
-    <h2>Want the complete set?</h2>
-    <p>This quiz is a free sample. The full downloads include every question with detailed explanations, ready for the 2026 chart update.</p>
-    <a class="btn g" href="${CTA.bank}" target="_blank" rel="noopener">Full 567-Question Study Pack →</a>
-    <a class="btn d" href="${CTA.chart}" target="_blank" rel="noopener">30 Chart Questions PDF →</a>
+    <h2>From Oct 26, 2026 the exam adds chart-image questions</h2>
+    <p>The FAA says the Part 107 test will include image-based questions that are <b>not in the printed test supplement</b>. This quiz is a free sample. The paid sets give you every question with a full explanation.</p>
+    <a class="btn g" href="${CTA.chart}" target="_blank" rel="noopener">The Oct 26 Chart Drill — 30 questions · $9.99 →</a>
+    <a class="btn d" href="${CTA.bank}" target="_blank" rel="noopener">Complete Bundle — 567 questions + charts · $19.99 →</a>
   </div>
   <footer>Unofficial study aid. Not affiliated with or endorsed by the FAA.<br>
   Always verify current information at faa.gov.</footer>`);
@@ -181,10 +181,10 @@ function result() {
   </div>
   ${wrong.length ? `<div class="card"><h2>Review your misses (${wrong.length})</h2>${misses}</div>` : ''}
   <div class="card cta">
-    <h2>Go deeper</h2>
-    <p>Pass with the complete 567-question pack — every question with a full explanation, plus the 30 image-based chart questions.</p>
-    <a class="btn g" href="${CTA.bank}" target="_blank" rel="noopener">Full 567-Question Study Pack →</a>
-    <a class="btn d" href="${CTA.chart}" target="_blank" rel="noopener">30 Chart Questions PDF →</a>
+    <h2>Want all 30 chart questions?</h2>
+    <p>Every one of the 30 image-based chart questions, with the chart printed above the question and a full explanation for each answer — plus a printable cheat sheet and the 2-page Oct 26 briefing.</p>
+    <a class="btn g" href="${CTA.chart}" target="_blank" rel="noopener">The Oct 26 Chart Drill — $9.99 →</a>
+    <a class="btn d" href="${CTA.bank}" target="_blank" rel="noopener">Or the Complete Bundle (567 Q) — $19.99 →</a>
   </div>
   <footer>Unofficial study aid. Not affiliated with or endorsed by the FAA.</footer>`);
 }
