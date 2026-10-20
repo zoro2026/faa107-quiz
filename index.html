@@ -75,6 +75,10 @@ const CTA = {
   chart: 'https://payhip.com/b/wlbz',
   bank: 'https://payhip.com/b/703w'
 };
+// ── 轻量统计（无账号、无 cookie，只数次数）──
+const TRK_NS = 'zoro2026';
+function track(k){ try{ (new Image()).src='https://abacus.jasoncameron.dev/hit/'+TRK_NS+'/faa107_'+k+'?_='+Date.now(); }catch(e){} }
+
 let ALL = [], Q = [], i = 0, score = 0, wrong = [], answered = false, mode = '';
 
 const app = document.getElementById('app');
@@ -117,8 +121,8 @@ function home() {
   <div class="card cta">
     <h2>From Oct 26, 2026 the exam adds chart-image questions</h2>
     <p>The FAA says the Part 107 test will include image-based questions that are <b>not in the printed test supplement</b>. This quiz is a free sample. The paid sets give you every question with a full explanation.</p>
-    <a class="btn g" href="${CTA.chart}" target="_blank" rel="noopener">The Oct 26 Chart Drill — 30 questions · $9.99 →</a>
-    <a class="btn d" href="${CTA.bank}" target="_blank" rel="noopener">Complete Bundle — 567 questions + charts · $19.99 →</a>
+    <a class="btn g" href="${CTA.chart}" target="_blank" rel="noopener" onclick="track('buy_chart')">The Oct 26 Chart Drill — 30 questions · $9.99 →</a>
+    <a class="btn d" href="${CTA.bank}" target="_blank" rel="noopener" onclick="track('buy_bank')">Complete Bundle — 567 questions + charts · $19.99 →</a>
   </div>
   <footer>Unofficial study aid. Not affiliated with or endorsed by the FAA.<br>
   Always verify current information at faa.gov.</footer>`);
@@ -126,6 +130,7 @@ function home() {
 
 function start(m) {
   mode = m;
+  track('start_' + m);
   if (m === 'chart') Q = shuffle(ALL.filter(q => q.image).slice());
   else if (m === 'quick') Q = shuffle(ALL.slice()).slice(0, 10);
   else Q = shuffle(ALL.slice()).slice(0, 25);
@@ -171,6 +176,7 @@ function pick(el, k) {
 function next() { i++; question(); }
 
 function result() {
+  track('done_' + mode);
   const pct = Q.length ? Math.round((score / Q.length) * 100) : 0;
   if (pct > store.best) store.best = pct;
   const msg = pct >= 90 ? 'Excellent — exam ready!' : pct >= 70 ? 'Passing range. Keep going.' : 'Keep practising — review the misses below.';
@@ -188,8 +194,8 @@ function result() {
   <div class="card cta">
     <h2>Want all 30 chart questions?</h2>
     <p>Every one of the 30 image-based chart questions, with the chart printed above the question and a full explanation for each answer — plus a printable cheat sheet and the 2-page Oct 26 briefing.</p>
-    <a class="btn g" href="${CTA.chart}" target="_blank" rel="noopener">The Oct 26 Chart Drill — $9.99 →</a>
-    <a class="btn d" href="${CTA.bank}" target="_blank" rel="noopener">Or the Complete Bundle (567 Q) — $19.99 →</a>
+    <a class="btn g" href="${CTA.chart}" target="_blank" rel="noopener" onclick="track('buy_chart')">The Oct 26 Chart Drill — $9.99 →</a>
+    <a class="btn d" href="${CTA.bank}" target="_blank" rel="noopener" onclick="track('buy_bank')">Or the Complete Bundle (567 Q) — $19.99 →</a>
   </div>
   <footer>Unofficial study aid. Not affiliated with or endorsed by the FAA.</footer>`);
 }
@@ -206,6 +212,7 @@ function zoom(src) {
   document.getElementById('zoom').classList.add('on');
 }
 document.getElementById('zx').onclick = () => document.getElementById('zoom').classList.remove('on');
+track('pageview');
 load();
 </script>
 </body>
