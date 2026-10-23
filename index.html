@@ -107,8 +107,11 @@ async function load() {
 function home() {
   const chart = ALL.filter(q => q.image).length;
   const total = ALL.length;
-  const dLeft = Math.ceil((new Date('2026-10-26T00:00:00-04:00') - new Date()) / 86400000);
-  const when = dLeft > 0 ? `${dLeft} days left` : 'In effect now';
+  const et = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
+  const etToday = new Date(et.getFullYear(), et.getMonth(), et.getDate());
+  const etStart = new Date(2026, 9, 26);
+  const dLeft = Math.round((etStart - etToday) / 86400000);
+  const when = dLeft > 1 ? `${dLeft} days left` : dLeft === 1 ? '1 day left' : dLeft === 0 ? 'Starts today' : 'In effect now';
   $(`<h1>FAA Part 107 Quiz</h1>
   <p class="sub">Free practice questions with instant explanations.</p>
   <div class="card" style="border-color:#d29922;background:rgba(210,153,34,.08)">
