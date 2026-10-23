@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>FAA Part 107 Quiz — Practice for the 2026 Chart Changes</title>
 <meta property="og:title" content="FAA Part 107 Quiz - Free Practice for the 2026 Chart Changes">
-<meta property="og:description" content="160 free practice questions including image-based sectional chart questions. Prepare before the Oct 26, 2026 exam change.">
+<meta property="og:description" content="From Oct 26, 2026 the FAA UAG test adds image-based questions not found in the printed supplement. 160 free practice questions.">
 <meta property="og:image" content="og.jpg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Free FAA Part 107 practice quiz. Image-based sectional chart questions plus 567 knowledge questions with explanations. Prepare before the Oct 26, 2026 change.">
+<meta name="description" content="Free FAA Part 107 practice quiz. From Oct 26, 2026 the UAG test adds image-based questions not found in the test supplements. Chart questions plus 567 knowledge questions with explanations.">
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 :root{
@@ -107,9 +107,13 @@ async function load() {
 function home() {
   const chart = ALL.filter(q => q.image).length;
   const total = ALL.length;
+  const dLeft = Math.ceil((new Date('2026-10-26T00:00:00-04:00') - new Date()) / 86400000);
+  const when = dLeft > 0 ? `${dLeft} days left` : 'In effect now';
   $(`<h1>FAA Part 107 Quiz</h1>
-  <p class="sub">Free practice questions with instant explanations.<br>
-  <b style="color:#d29922">New from Oct 26, 2026:</b> the real exam adds chart images that are <b>not</b> in the printed testing supplement.</p>
+  <p class="sub">Free practice questions with instant explanations.</p>
+  <div class="card" style="border-color:#d29922;background:rgba(210,153,34,.08)">
+    <b style="color:#d29922">${when} — Oct 26, 2026:</b> the FAA UAG test starts including <b>image-based questions not found in the test supplements</b>.
+  </div>
   <div class="card">
     <h2>Choose a mode</h2>
     <span class="pill">${total} questions total</span><span class="pill">${chart} with charts</span>
@@ -119,8 +123,8 @@ function home() {
     <button class="btn d" onclick="start('all')">Full Test<small>25 mixed questions</small></button>
   </div>
   <div class="card cta">
-    <h2>From Oct 26, 2026 the exam adds chart-image questions</h2>
-    <p>The FAA says the Part 107 test will include image-based questions that are <b>not in the printed test supplement</b>. This quiz is a free sample. The paid sets give you every question with a full explanation.</p>
+    <h2>Oct 26, 2026: image-based questions the printed supplement doesn't have</h2>
+    <p>FAA Airman Testing advisory, Sept 2026: <i>"Beginning October 26, 2026, the … Unmanned Aircraft General-Small (UAG) tests will include image-based questions not found in the test supplements."</i> This quiz is a free sample. The paid sets give you every question with a full explanation.</p>
     <a class="btn g" href="${CTA.chart}" target="_blank" rel="noopener" onclick="track('buy_chart')">The Oct 26 Chart Drill — 30 questions · $9.99 →</a>
     <a class="btn d" href="${CTA.bank}" target="_blank" rel="noopener" onclick="track('buy_bank')">Complete Bundle — 567 questions + charts · $19.99 →</a>
   </div>
